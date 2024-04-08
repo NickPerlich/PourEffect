@@ -25,7 +25,7 @@ using UnityEngine;
 
 public class PourDetector : MonoBehaviour
 {
-    public int pourThreshold = 45;
+    public int pourThreshold = 30;
     public Transform origin = null;
     public GameObject streamPrefab = null;
 
@@ -61,10 +61,13 @@ public class PourDetector : MonoBehaviour
     private void EndPour()
     {
         print("End");
+        currentStream.End();
+        currentStream = null;
     }
 
     private float CalculatePourAngle()
     {
+        print(transform.forward.y * Mathf.Rad2Deg);
         return transform.forward.y * Mathf.Rad2Deg;
     }
 
